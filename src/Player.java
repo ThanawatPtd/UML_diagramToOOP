@@ -4,7 +4,7 @@ import java.util.List;
  * 6510450445
  * */
 public class Player {
-    private List<Die> dies;
+    private List<Die> dice;
     private String name;
     private Piece piece;
     private Board board;
@@ -17,7 +17,7 @@ public class Player {
     public void takeTurn(){
         int fv =0;
 
-        for(Die die: dies){
+        for(Die die: dice){
             die.roll();
             fv += die.getFaceValue();
         }
@@ -27,8 +27,8 @@ public class Player {
         piece.setLocation(newLoc);
     }
 
-    public void setDies(List<Die> dies) {
-        this.dies = dies;
+    public void setDice(List<Die> dice) {
+        this.dice = dice;
     }
 
     public void setBoard(Board board) {
@@ -37,5 +37,9 @@ public class Player {
 
     public Piece getPiece() {
         return piece;
+    }
+
+    public String getName() {
+        return name;
     }
 }

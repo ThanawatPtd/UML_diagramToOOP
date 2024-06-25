@@ -1,28 +1,30 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 /**
  * Thanawat Potidet
  * 6510450445
  * */
 public class MGame {
     private int roundCount;
-    public ArrayList<Die> die;
-    private Board board;
-    private ArrayList<Player> playerList;
+    public ArrayList<Die> dice;
+    private final Board board;
+    private final ArrayList<Player> players;
 
-    public MGame(ArrayList<Player> playerList) {
+    public MGame(ArrayList<Player> playerList) throws IllegalArgumentException {
         this.roundCount = 0;
-        die = new ArrayList<Die>();
-        die.add(new Die());
-        die.add(new Die());
+        dice = new ArrayList<>();
+        dice.add(new Die());
+        dice.add(new Die());
         this.board = new Board();
-        this.playerList = playerList;
+        this.players = playerList;
+        if (this.players.size() < 2) {
+            throw new IllegalArgumentException("There must be at least 2 players to start the game.");
+        }
     }
 
     public void playGame(){
-        for(Player player : playerList){
-            player.setDies(this.die);
+        for(Player player : players){
+            player.setDice(this.dice);
             player.setBoard(this.board);
         }
         for(roundCount = 0; roundCount < 50; roundCount++){
@@ -31,12 +33,12 @@ public class MGame {
     }
 
     private void playRound(int roundCount){
-        playerList.get(roundCount % count()).takeTurn();
+        players.get(roundCount % count()).takeTurn();
     }
 
     public int count(){
         int count = 0;
-        for(Player player : playerList){
+        for(Player player : players){
             count++;
         }
         return count;
