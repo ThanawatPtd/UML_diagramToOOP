@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Thanawat Potidet
  * 6510450445
  * */
 public class Player {
-    private List<Die> dice;
+    private ArrayList<Die> dice;
     private String name;
     private Piece piece;
     private Board board;
@@ -27,7 +28,7 @@ public class Player {
         piece.setLocation(newLoc);
     }
 
-    public void setDice(List<Die> dice) {
+    public void setDice(ArrayList<Die> dice) {
         this.dice = dice;
     }
 
