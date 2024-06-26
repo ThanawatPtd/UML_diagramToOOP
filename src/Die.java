@@ -5,7 +5,7 @@
 public class Die {
 
     private int faceValue;
-    private int[] availableFaces;
+    private final int[] availableFaces;
 
     public Die() {
         faceValue = 1;
